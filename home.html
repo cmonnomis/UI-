@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NavAssist - Home</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <header>
+    <h1>NavAssist</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">home </a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="setting.html">Setting</a></li>
+        <li><a href="map.html">Map</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="search-section">
+      <h2>Navigate with confidence <br> Arrive with ease <br> NavAssist: your intelligent traffic companion</h2>
+      <form onsubmit="submitForm(event)">
+        <label for="destination">Enter your destination:</label>
+        <input type="text" id="destination" name="destination" placeholder="Enter a location">
+        <button type="submit">Go</button>
+      </form>
+      
+    </section>
+    
+    <section class="features-section">
+      <div class="feature">
+        <img src="Route.png" alt="Route Icon">
+        <h3>Find the Best Route</h3>
+        <p>Get accurate and real-time navigation to reach your destination efficiently.</p>
+      </div>
+      
+      <div class="feature">
+        <img src="search.png" alt="Search Icon">
+        <h3>Search Places of Interest</h3>
+        <p>Discover nearby restaurants, gas stations, attractions, and more with our comprehensive search.</p>
+      </div>
+      
+      <div class="feature">
+        <img src="setting.png" alt="Setting Icon">
+        <h3>Personalize Your Experience</h3>
+        <p>Customize map preferences, route calculations, and favorite locations for a personalized navigation experience.</p>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 NavAssist. All rights reserved.</p>
+  </footer>
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+      
+      var destination = document.getElementById("destination").value;
+      var url = "map.html?destination=" + encodeURIComponent(destination);
+      
+      window.location.href = url; // Redirect to the map page with the destination parameter
+    }
+  </script>
+  
+</body>
+</html>

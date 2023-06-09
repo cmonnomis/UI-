@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NavAssist</title>
+  <link rel="stylesheet" href="map.css"> <!-- Add your CSS styles if any -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+  <script>
+    function toggleVisibility(sectionId) {
+      var section = document.getElementById(sectionId);
+      section.classList.toggle("hidden");
+    }
+    
+    function initMap() {
+      // Specify the coordinates for the center of the map
+      var center = { lat: 37.7749, lng: -122.4194 };
+      
+      // Create a new map instance
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: center,
+        zoom: 12
+      });
+      
+      // Add a marker for the current position of the car
+      var carMarker = new google.maps.Marker({
+        position: center,
+        map: map,
+        title: 'Current Position'
+      });
+    }
+  </script>
+</head>
+<body onload="initMap()">
+  <header>
+    <h1>NavAssist</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">home </a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="setting.html">Setting</a></li>
+        <li><a href="map.html">Map</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="navigation-map">
+      <h2>Navigation Map</h2>
+      <div id="map" style="height: 400px;"></div>
+    </section>
+    
+    <section id="popular-destinations" onclick="toggleVisibility('popular-destinations-content')">
+      <h3>Popular Destinations</h3>
+      <div id="popular-destinations-content" class="hidden">
+        <!-- Add popular destinations content here -->
+        <p>Content for Popular Destinations</p>
+      </div>
+    </section>
+    
+    <section id="recent-search-suggestions" onclick="toggleVisibility('recent-search-suggestions-content')">
+      <h3>Recent Search Suggestions</h3>
+      <div id="recent-search-suggestions-content" class="hidden">
+        <!-- Add recent search suggestions content here -->
+        <p>Content for Recent Search Suggestions</p>
+      </div>
+    </section>
+    
+    <section id="urgent-messages" onclick="toggleVisibility('urgent-messages-content')">
+      <h3>Urgent Messages</h3>
+      <div id="urgent-messages-content" class="hidden">
+        <!-- Add urgent messages content here -->
+        <p>Content for Urgent Messages</p>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 NavAssist. All rights reserved.</p>
+  </footer>
+  <script>
+    function getURLParameter(name) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+  
+    // Get the destination value from the URL parameter
+    var destination = getURLParameter("destination");
+  
+    // Use the destination value as needed (e.g., display it on the map)
+    console.log("Destination:", destination);
+    // Other code to display the map based on the destination value
+  </script>
+  
+</body>
+</html>
